@@ -26,3 +26,17 @@ The microservice will support the following API endpoints:
 5. Use Flask Blueprints to organize your application into modular components.
 6. Implement input validation to ensure data integrity.
 7. Use version control, such as Git, to track changes to your code over time.
+
+***
+## Project Structure
+
+- Create a `routes` directory to keep all the routes related to expenses.
+- Create an `__init__.py` file inside the `routes` directory to initialize a Flask Blueprint for expenses routes.
+- Create a `controllers` directory to keep all the controllers related to expenses.
+- Create an `__init__.py` file inside the `controllers` directory to initialize the Flask Blueprint for expenses controllers.
+- Create a `models` directory to keep all the models related to expenses.
+- Create an `__init__.py` file inside the `models` directory to initialize the Flask SQLAlchemy object.
+- Create an `expense.py` file inside the `models` directory to define the `Expense` model.
+- Create a `services` directory to keep all the services related to expenses.
+- Create an `__init__.py` file inside the `services` directory to initialize the Flask Blueprint for expenses services.
+- Create an `expense.py` file inside the `services` directory to define the `ExpenseService` class.
