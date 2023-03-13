@@ -9,4 +9,4 @@ class ExpenseModel(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(200))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.category_id'), nullable=False)
-    category = db.relationship('CategoryModel', back_populates='expenses', lazy='dynamic')
+    categories = db.relationship('CategoryModel', back_populates='expenses')
