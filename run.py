@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_smorest import Api
 from app.database import db
 from app.config import Config
-from app.routes import ExpenseBlueprint, CategoryBlueprint
+from app.routes import ExpenseBlueprint, CategoryBlueprint,AuthBlueprint
 from flask_jwt_extended import JWTManager
 from app.models import BlockedJWT
 from flask_migrate import Migrate
@@ -67,6 +67,7 @@ def create_app():
     api = Api(app)
     api.register_blueprint(ExpenseBlueprint)
     api.register_blueprint(CategoryBlueprint)
+    api.register_blueprint(AuthBlueprint)
 
     return app
 
