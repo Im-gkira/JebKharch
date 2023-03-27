@@ -37,7 +37,7 @@ class Login(MethodView):
     def post(self, user_data):
         user = UserModel.query.filter(UserModel.email == user_data["email"]).first()
 
-        if user and pbkdf2_sha256.verify(user.password, user_data['password']):
+        if user and pbkdf2_sha256.verify(user_data['password'], user.password):
             access_token = create_access_token(identity=user.id)
             return {'access_token': access_token}, HTTPStatus.ACCEPTED
 
@@ -57,5 +57,3 @@ class Logout(MethodView):
         db.session.commit()
 
         return {"message": "logged out successfully"}, HTTPStatus.OK
-
-
