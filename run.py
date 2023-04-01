@@ -2,16 +2,18 @@ from flask import Flask, jsonify
 from flask_smorest import Api
 from app.database import db
 from app.config import Config
-from app.routes import ExpenseBlueprint, CategoryBlueprint,AuthBlueprint
+from app.routes import ExpenseBlueprint, CategoryBlueprint, AuthBlueprint
 from flask_jwt_extended import JWTManager
 from app.models import BlockedJWT
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     db.init_app(app)
+    CORS(app)
 
     migrate = Migrate(app, db)
 
