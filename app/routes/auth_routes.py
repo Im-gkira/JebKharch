@@ -17,9 +17,8 @@ class Register(MethodView):
     @bp.arguments(User)
     def post(self, user_data):
         user = UserModel.query.filter(UserModel.email == user_data['email']).first()
-
         if user:
-            abort(HTTPStatus.ALREADY_REPORTED, "user already exists")
+            abort(HTTPStatus.BAD_REQUEST, "user already exists")
 
         user_data['password'] = pbkdf2_sha256.hash(user_data['password'])
         user = UserModel(**user_data)
